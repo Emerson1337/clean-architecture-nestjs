@@ -3,7 +3,7 @@ import { getConnection } from 'typeorm';
 
 @Controller('code-challenge')
 export class CodeChallengeController {
-  constructor() {}
+  // constructor() {}
 
   @Get()
   async fetchAll() {
