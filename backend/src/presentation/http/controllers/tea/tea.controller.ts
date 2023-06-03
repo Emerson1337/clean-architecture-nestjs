@@ -39,7 +39,6 @@ export class TeaController {
         .status(201)
         .send(ok(await this.teaService.createTea(tea)));
     } catch (error) {
-      console.error(error);
       return response.status(error.status).send(handleError(error));
     }
   }
