@@ -1,0 +1,15 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "1234",
+  "database": "tea-coffee-db",
+  "synchronize": false,
+  "logging": true,
+  "entities": ["src/**/*.entity{.js,.ts}"],
+  "migrations": ["src/database/typeorm/migrations/**/*{.ts,.js}"],
+  "cli": {
+    "migrationsDir": "src/database/typeorm/migrations"
+  }
+}
