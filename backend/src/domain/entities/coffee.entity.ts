@@ -3,7 +3,7 @@ import BaseEntity from './config/base.entity';
 
 @Entity('coffees')
 export class Coffee extends BaseEntity {
-  @Column()
+  @Column({ unique: true })
   name: string;
 
   @Column()
