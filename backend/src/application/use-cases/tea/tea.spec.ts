@@ -1,6 +1,4 @@
 import { TeaService } from './tea.service';
-import { CreateProductDto } from '../../dtos/create-product-dto';
-import { Tea } from '../../../domain/entities/tea.entity';
 import { TeaRepository } from './repositories/tea.repository';
 import {
   InvalidParamError,
@@ -8,6 +6,8 @@ import {
 } from '../../../presentation/errors';
 import { Validator } from '../../../domain/validators/validator.interface';
 import { ProductValidator } from '../../../domain/validators/product.validator';
+import { makeFakeTea } from './mocks/factories';
+import { TeaRepositoryStub } from './mocks/TeaRepositoryStub';
 
 interface SutTypes {
   sut: TeaService;
@@ -15,37 +15,8 @@ interface SutTypes {
   productValidator: Validator;
 }
 
-const makeFakeTeaRepository = (): TeaRepository => {
-  class TeaRepositoryStub implements TeaRepository {
-    tea: CreateProductDto;
-    query: any;
-
-    async create(tea: CreateProductDto): Promise<Tea> {
-      this.tea = tea;
-      const fakeTea = makeFakeTea();
-
-      return new Promise((resolve) => resolve(fakeTea));
-    }
-
-    async get(query: any): Promise<Array<Tea>> {
-      this.query = query;
-      const fakeTea = makeFakeTea();
-
-      return new Promise((resolve) => resolve([fakeTea, fakeTea]));
-    }
-
-    async find(query: any): Promise<Tea> {
-      this.query = query;
-
-      return new Promise((resolve) => resolve(null));
-    }
-  }
-
-  return new TeaRepositoryStub();
-};
-
-const makeSut = (): SutTypes => {
-  const teaRepositoryStub = makeFakeTeaRepository();
+export const makeSut = (): SutTypes => {
+  const teaRepositoryStub = new TeaRepositoryStub();
   const productValidator = new ProductValidator();
   const sut = new TeaService(teaRepositoryStub, productValidator);
   return {
@@ -54,15 +25,6 @@ const makeSut = (): SutTypes => {
     productValidator,
   };
 };
-
-const makeFakeTea = (): Tea => ({
-  id: 'valid_id',
-  name: 'valid_name',
-  description: 'valid_description',
-  picture: 'valid_picture',
-  created_at: new Date('2023-06-03T03:43:54.555Z'),
-  updated_at: new Date('2023-06-03T03:43:54.555Z'),
-});
 
 describe('Tea service', () => {
   test('Should not be able to create tea if no picture is provided', async () => {
@@ -73,7 +35,7 @@ describe('Tea service', () => {
       description: 'valid_description',
     };
 
-    const teaResponse = async () => await sut.createTea(teaRequest);
+    const teaResponse = async () => await sut.create(teaRequest);
 
     expect(teaResponse).rejects.toThrow(new MissingParamError('picture'));
   });
@@ -86,7 +48,7 @@ describe('Tea service', () => {
       description: '',
     };
 
-    const teaResponse = async () => await sut.createTea(teaRequest);
+    const teaResponse = async () => await sut.create(teaRequest);
     expect(teaResponse).rejects.toThrow(new MissingParamError('description'));
   });
 
@@ -98,7 +60,7 @@ describe('Tea service', () => {
       description: 'valid_description',
     };
 
-    const teaResponse = async () => await sut.createTea(teaRequest);
+    const teaResponse = async () => await sut.create(teaRequest);
     expect(teaResponse).rejects.toThrow(new MissingParamError('name'));
   });
 
@@ -114,7 +76,7 @@ describe('Tea service', () => {
       .spyOn(teaRepositoryStub, 'find')
       .mockReturnValueOnce(Promise.resolve(makeFakeTea()));
 
-    const teaResponse = async () => await sut.createTea(teaRequest);
+    const teaResponse = async () => await sut.create(teaRequest);
 
     expect(teaResponse).rejects.toThrow(
       new InvalidParamError('name', 'This name already exists!'),
@@ -129,7 +91,7 @@ describe('Tea service', () => {
       description: 'val',
     };
 
-    const teaResponse = async () => await sut.createTea(teaRequest);
+    const teaResponse = async () => await sut.create(teaRequest);
     expect(teaResponse).rejects.toThrow(
       new InvalidParamError('description', 'Field too short!'),
     );
@@ -138,7 +100,7 @@ describe('Tea service', () => {
   test('Should return a tea created if valid data is provided', async () => {
     const { sut } = makeSut();
 
-    const httpResponse = await sut.createTea({
+    const httpResponse = await sut.create({
       name: 'Tea',
       picture: 'coffe.png',
       description: 'desc',
@@ -150,7 +112,7 @@ describe('Tea service', () => {
   test('Should return all teas created', async () => {
     const { sut } = makeSut();
 
-    const httpResponse = await sut.listTeas();
+    const httpResponse = await sut.list();
 
     expect(httpResponse).toEqual([makeFakeTea(), makeFakeTea()]);
   });
