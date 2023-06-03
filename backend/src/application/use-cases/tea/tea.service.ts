@@ -12,7 +12,7 @@ export class TeaService {
     private productValidator: ProductValidator,
   ) {}
 
-  async createTea(tea: CreateProductDto): Promise<Tea | Error> {
+  async create(tea: CreateProductDto): Promise<Tea | Error> {
     this.productValidator.validateProductFields(tea);
 
     const teaCreated = await this.teaRepository.find({
@@ -25,7 +25,7 @@ export class TeaService {
     return await this.teaRepository.create(tea);
   }
 
-  async listTeas(): Promise<Array<Tea> | Error> {
+  async list(): Promise<Array<Tea> | Error> {
     return await this.teaRepository.get();
   }
 }

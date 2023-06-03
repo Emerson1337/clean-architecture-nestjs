@@ -24,9 +24,7 @@ export class TeaController {
         picture: request.file.path,
       });
 
-      return response
-        .status(201)
-        .send(ok(await this.teaService.createTea(tea)));
+      return response.status(201).send(ok(await this.teaService.create(tea)));
     } catch (error) {
       return response.status(error.status).send(handleError(error));
     }
@@ -35,7 +33,7 @@ export class TeaController {
   @Get()
   async list(@Res() response: Response) {
     try {
-      return response.status(200).send(ok(await this.teaService.listTeas()));
+      return response.status(200).send(ok(await this.teaService.list()));
     } catch (error) {
       return response.status(error.status).send(handleError(error));
     }
