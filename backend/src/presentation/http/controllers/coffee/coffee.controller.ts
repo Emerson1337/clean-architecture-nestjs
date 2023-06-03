@@ -1,4 +1,4 @@
-import { Controller, Post, Req, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Post, Req, UseInterceptors } from '@nestjs/common';
 import { CoffeeService } from '../../../../application/use-cases/coffee/coffee.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
@@ -27,5 +27,10 @@ export class CoffeeController {
     });
 
     return this.coffeeService.createCoffee(coffee);
+  }
+
+  @Get()
+  list() {
+    return this.coffeeService.listCoffees();
   }
 }
