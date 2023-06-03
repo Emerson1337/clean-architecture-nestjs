@@ -26,7 +26,7 @@ export class CoffeeController {
 
       return response
         .status(201)
-        .send(ok(await this.coffeeService.createCoffee(coffee)));
+        .send(ok(await this.coffeeService.create(coffee)));
     } catch (error) {
       return response.status(error.status).send(handleError(error));
     }
@@ -35,9 +35,7 @@ export class CoffeeController {
   @Get()
   async list(@Res() response: Response) {
     try {
-      return response
-        .status(200)
-        .send(ok(await this.coffeeService.listCoffees()));
+      return response.status(200).send(ok(await this.coffeeService.list()));
     } catch (error) {
       return response.status(error.status).send(handleError(error));
     }
