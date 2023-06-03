@@ -1,6 +1,4 @@
 import { CoffeeService } from './coffee.service';
-import { CreateProductDto } from '../../dtos/create-product-dto';
-import { Coffee } from '../../../domain/entities/coffee.entity';
 import { CoffeeRepository } from './repositories/coffee.repository';
 import {
   InvalidParamError,
@@ -8,6 +6,8 @@ import {
 } from '../../../presentation/errors';
 import { Validator } from '../../../domain/validators/validator.interface';
 import { ProductValidator } from '../../../domain/validators/product.validator';
+import { CoffeeRepositoryStub } from './mocks/CoffeeRepositoryStub';
+import { makeFakeCoffee } from './mocks/factories';
 
 interface SutTypes {
   sut: CoffeeService;
@@ -15,37 +15,8 @@ interface SutTypes {
   productValidator: Validator;
 }
 
-const makeFakeCoffeeRepository = (): CoffeeRepository => {
-  class CoffeeRepositoryStub implements CoffeeRepository {
-    coffee: CreateProductDto;
-    query: any;
-
-    async create(coffee: CreateProductDto): Promise<Coffee> {
-      this.coffee = coffee;
-      const fakeCoffee = makeFakeCoffee();
-
-      return new Promise((resolve) => resolve(fakeCoffee));
-    }
-
-    async get(query: any): Promise<Array<Coffee>> {
-      this.query = query;
-      const fakeCoffee = makeFakeCoffee();
-
-      return new Promise((resolve) => resolve([fakeCoffee, fakeCoffee]));
-    }
-
-    async find(query: any): Promise<Coffee> {
-      this.query = query;
-
-      return new Promise((resolve) => resolve(null));
-    }
-  }
-
-  return new CoffeeRepositoryStub();
-};
-
 const makeSut = (): SutTypes => {
-  const coffeeRepositoryStub = makeFakeCoffeeRepository();
+  const coffeeRepositoryStub = new CoffeeRepositoryStub();
   const productValidator = new ProductValidator();
   const sut = new CoffeeService(coffeeRepositoryStub, productValidator);
   return {
@@ -54,15 +25,6 @@ const makeSut = (): SutTypes => {
     productValidator,
   };
 };
-
-const makeFakeCoffee = (): Coffee => ({
-  id: 'valid_id',
-  name: 'valid_name',
-  description: 'valid_description',
-  picture: 'valid_picture',
-  created_at: new Date('2023-06-03T03:43:54.555Z'),
-  updated_at: new Date('2023-06-03T03:43:54.555Z'),
-});
 
 describe('Coffee service', () => {
   test('Should not be able to create coffee if no picture is provided', async () => {
@@ -73,9 +35,11 @@ describe('Coffee service', () => {
       description: 'valid_description',
     };
 
-    const coffeeResponse = async () => await sut.createCoffee(coffeeRequest);
+    const coffeeResponse = async () => await sut.create(coffeeRequest);
 
-    expect(coffeeResponse).rejects.toThrow(new MissingParamError('picture'));
+    await expect(coffeeResponse).rejects.toThrow(
+      new MissingParamError('picture'),
+    );
   });
 
   test('Should not be able to create coffee if empty description is provided', async () => {
@@ -86,8 +50,8 @@ describe('Coffee service', () => {
       description: '',
     };
 
-    const coffeeResponse = async () => await sut.createCoffee(coffeeRequest);
-    expect(coffeeResponse).rejects.toThrow(
+    const coffeeResponse = async () => await sut.create(coffeeRequest);
+    await expect(coffeeResponse).rejects.toThrow(
       new MissingParamError('description'),
     );
   });
@@ -100,8 +64,8 @@ describe('Coffee service', () => {
       description: 'valid_description',
     };
 
-    const coffeeResponse = async () => await sut.createCoffee(coffeeRequest);
-    expect(coffeeResponse).rejects.toThrow(new MissingParamError('name'));
+    const coffeeResponse = async () => await sut.create(coffeeRequest);
+    await expect(coffeeResponse).rejects.toThrow(new MissingParamError('name'));
   });
 
   test('Should not be able to create coffee if name already registered is provided', async () => {
@@ -116,9 +80,9 @@ describe('Coffee service', () => {
       .spyOn(coffeeRepositoryStub, 'find')
       .mockReturnValueOnce(Promise.resolve(makeFakeCoffee()));
 
-    const coffeeResponse = async () => await sut.createCoffee(coffeeRequest);
+    const coffeeResponse = async () => await sut.create(coffeeRequest);
 
-    expect(coffeeResponse).rejects.toThrow(
+    await expect(coffeeResponse).rejects.toThrow(
       new InvalidParamError('name', 'This name already exists!'),
     );
   });
@@ -131,8 +95,8 @@ describe('Coffee service', () => {
       description: 'val',
     };
 
-    const coffeeResponse = async () => await sut.createCoffee(coffeeRequest);
-    expect(coffeeResponse).rejects.toThrow(
+    const coffeeResponse = async () => await sut.create(coffeeRequest);
+    await expect(coffeeResponse).rejects.toThrow(
       new InvalidParamError('description', 'Field too short!'),
     );
   });
@@ -140,7 +104,7 @@ describe('Coffee service', () => {
   test('Should return a coffee created if valid data is provided', async () => {
     const { sut } = makeSut();
 
-    const httpResponse = await sut.createCoffee({
+    const httpResponse = await sut.create({
       name: 'Coffee',
       picture: 'coffe.png',
       description: 'desc',
@@ -152,7 +116,7 @@ describe('Coffee service', () => {
   test('Should return all coffees created', async () => {
     const { sut } = makeSut();
 
-    const httpResponse = await sut.listCoffees();
+    const httpResponse = await sut.list();
 
     expect(httpResponse).toEqual([makeFakeCoffee(), makeFakeCoffee()]);
   });
