@@ -1,8 +1,16 @@
-import { Controller, Get, Post, Req, UseInterceptors } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Req,
+  Res,
+  UseInterceptors,
+} from '@nestjs/common';
 import { CoffeeService } from '../../../../application/use-cases/coffee/coffee.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { Request } from 'express';
+import { Request, Response } from 'express';
+import { handleError, ok } from '../../../helpers/http.helper';
 
 @Controller('coffees')
 export class CoffeeController {
@@ -21,16 +29,28 @@ export class CoffeeController {
       }),
     }),
   )
-  create(@Req() request: Request) {
-    const coffee = Object.assign(request.body, {
-      picture: request.file.path,
-    });
+  async create(@Req() request: Request, @Res() response: Response) {
+    try {
+      const coffee = Object.assign(request.body, {
+        picture: request.file.path,
+      });
 
-    return this.coffeeService.createCoffee(coffee);
+      return response
+        .status(201)
+        .send(ok(await this.coffeeService.createCoffee(coffee)));
+    } catch (error) {
+      return response.status(error.status).send(handleError(error));
+    }
   }
 
   @Get()
-  list() {
-    return this.coffeeService.listCoffees();
+  async list(@Res() response: Response) {
+    try {
+      return response
+        .status(200)
+        .send(ok(await this.coffeeService.listCoffees()));
+    } catch (error) {
+      return response.status(error.status).send(handleError(error));
+    }
   }
 }
