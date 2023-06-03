@@ -1,5 +1,5 @@
-export class CreateProductDto {
+export type CreateProductDto = {
   name: string;
   description: string;
-  picture: any;
-}
+  picture: string;
+};
