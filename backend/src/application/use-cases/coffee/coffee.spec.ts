@@ -64,7 +64,7 @@ const makeFakeCoffee = (): Coffee => ({
   updated_at: new Date('2023-06-03T03:43:54.555Z'),
 });
 
-describe('SignUp controller', () => {
+describe('Coffee service', () => {
   test('Should not be able to create coffee if no picture is provided', async () => {
     const { sut } = makeSut();
     const coffeeRequest = {
