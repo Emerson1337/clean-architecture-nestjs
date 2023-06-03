@@ -8,8 +8,8 @@ module.exports = {
   synchronize: false,
   logging: true,
   entities: ['src/**/*.entity{.js,.ts}'],
-  migrations: ['src/database/typeorm/migrations/**/*{.ts,.js}'],
+  migrations: ['src/infra/database/typeorm/migrations/**/*{.ts,.js}'],
   cli: {
-    migrationsDir: 'src/database/typeorm/migrations',
+    migrationsDir: 'src/infra/database/typeorm/migrations',
   },
 };
