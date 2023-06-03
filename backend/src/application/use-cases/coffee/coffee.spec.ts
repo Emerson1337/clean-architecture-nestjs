@@ -77,7 +77,7 @@ describe('Coffee service', () => {
     };
 
     jest
-      .spyOn(coffeeRepositoryStub, 'find')
+      .spyOn(coffeeRepositoryStub, 'findByName')
       .mockReturnValueOnce(Promise.resolve(makeFakeCoffee()));
 
     const coffeeResponse = async () => await sut.create(coffeeRequest);
