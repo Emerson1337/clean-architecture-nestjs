@@ -8,30 +8,16 @@ import {
 } from '@nestjs/common';
 import { TeaService } from '../../../../application/use-cases/tea/tea.service';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { diskStorage } from 'multer';
 import { Request, Response } from 'express';
 import { handleError, ok } from '../../../helpers/http.helper';
-import { extname } from 'path';
+import { FileAdapter } from '../../../../infra/adapters/fileAdapter/file.adapter';
 
 @Controller('teas')
 export class TeaController {
   constructor(private readonly teaService: TeaService) {}
 
   @Post()
-  @UseInterceptors(
-    FileInterceptor('picture', {
-      storage: diskStorage({
-        destination: './uploads',
-        filename: (req, file, cb) => {
-          const extension = extname(file.originalname);
-          const uniqueSuffix =
-            Date.now() + '-' + Math.round(Math.random() * 1e9);
-          const fileName = `${file.fieldname}-${uniqueSuffix}${extension}`;
-          cb(null, fileName);
-        },
-      }),
-    }),
-  )
+  @UseInterceptors(FileInterceptor('picture', new FileAdapter().saveFile()))
   async create(@Req() request: Request, @Res() response: Response) {
     try {
       const tea = Object.assign(request.body, {
