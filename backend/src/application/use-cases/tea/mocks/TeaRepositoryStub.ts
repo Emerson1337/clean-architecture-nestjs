@@ -14,16 +14,14 @@ export class TeaRepositoryStub implements TeaRepository {
     return new Promise((resolve) => resolve(fakeTea));
   }
 
-  async get(query: any): Promise<Array<Tea>> {
-    this.query = query;
+  async getAll(): Promise<Array<Tea>> {
     const fakeTea = makeFakeTea();
 
     return new Promise((resolve) => resolve([fakeTea, fakeTea]));
   }
 
-  async find(query: any): Promise<Tea> {
-    this.query = query;
-
+  async findByName(name: string): Promise<Tea> {
+    name;
     return new Promise((resolve) => resolve(null));
   }
 }

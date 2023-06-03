@@ -73,7 +73,7 @@ describe('Tea service', () => {
     };
 
     jest
-      .spyOn(teaRepositoryStub, 'find')
+      .spyOn(teaRepositoryStub, 'findByName')
       .mockReturnValueOnce(Promise.resolve(makeFakeTea()));
 
     const teaResponse = async () => await sut.create(teaRequest);
