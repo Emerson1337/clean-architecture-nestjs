@@ -1,7 +1,16 @@
 import { ServerError } from '../errors';
 import { HttpResponse } from '../http/protocols/http.protocols';
 
-export const badRequest = (error: Error): HttpResponse => ({
+type IBadRequest = {
+  name: string;
+  message: string;
+};
+
+export const badRequest = (
+  error: Error,
+): HttpResponse<{
+  error: IBadRequest;
+}> => ({
   body: {
     error: {
       name: error.name,
@@ -10,11 +19,15 @@ export const badRequest = (error: Error): HttpResponse => ({
   },
 });
 
-export const serverError = (error: Error): HttpResponse => ({
+export const serverError = (
+  error: Error,
+): HttpResponse<{ error: ServerError }> => ({
   body: { error: new ServerError(error.stack) },
 });
 
-export const ok = (data: any): HttpResponse => ({ body: data });
+export const ok = <T>(data: T): HttpResponse<T> => ({
+  body: data,
+});
 
 export const handleError = (error: Error) => {
   if (['MissingParamError', 'InvalidParamError'].includes(error.name))
