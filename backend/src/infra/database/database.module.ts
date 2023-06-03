@@ -4,6 +4,9 @@ import { TypeOrmCoffeeRepository } from './typeorm/repositories/coffee.repositor
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Coffee } from '../../domain/entities/coffee.entity';
 import { ConfigModule } from '@nestjs/config';
+import { Tea } from '../../domain/entities/tea.entity';
+import { TeaRepository } from '../../application/use-cases/tea/repositories/tea.repository';
+import { TypeOrmTeaRepository } from './typeorm/repositories/tea.repository';
 
 @Module({
   imports: [
@@ -18,14 +21,18 @@ import { ConfigModule } from '@nestjs/config';
       entities: [__dirname + '/../../**/*.entity{.js,.ts}'],
       synchronize: false,
     }),
-    TypeOrmModule.forFeature([Coffee]),
+    TypeOrmModule.forFeature([Coffee, Tea]),
   ],
   providers: [
     {
       provide: CoffeeRepository,
       useClass: TypeOrmCoffeeRepository,
     },
+    {
+      provide: TeaRepository,
+      useClass: TypeOrmTeaRepository,
+    },
   ],
-  exports: [CoffeeRepository],
+  exports: [CoffeeRepository, TeaRepository],
 })
 export class DatabaseModule {}
