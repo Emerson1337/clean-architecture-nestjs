@@ -15,9 +15,7 @@ export class CoffeeService {
   async create(coffee: CreateProductDto): Promise<Coffee | Error> {
     this.productValidator.validateProductFields(coffee);
 
-    const coffeeCreated = await this.coffeeRepository.find({
-      name: coffee.name,
-    });
+    const coffeeCreated = await this.coffeeRepository.findByName(coffee.name);
 
     if (coffeeCreated)
       throw new InvalidParamError('name', 'This name already exists!');
@@ -26,6 +24,6 @@ export class CoffeeService {
   }
 
   async list(): Promise<Array<Coffee> | Error> {
-    return await this.coffeeRepository.get();
+    return await this.coffeeRepository.getAll();
   }
 }

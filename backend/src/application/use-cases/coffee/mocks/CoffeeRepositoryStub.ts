@@ -5,7 +5,6 @@ import { makeFakeCoffee } from './factories';
 
 export class CoffeeRepositoryStub implements CoffeeRepository {
   coffee: CreateProductDto;
-  query: any;
 
   async create(coffee: CreateProductDto): Promise<Coffee> {
     this.coffee = coffee;
@@ -14,15 +13,14 @@ export class CoffeeRepositoryStub implements CoffeeRepository {
     return new Promise((resolve) => resolve(fakeCoffee));
   }
 
-  async get(query: any): Promise<Array<Coffee>> {
-    this.query = query;
+  async getAll(): Promise<Array<Coffee>> {
     const fakeCoffee = makeFakeCoffee();
 
     return new Promise((resolve) => resolve([fakeCoffee, fakeCoffee]));
   }
 
-  async find(query: any): Promise<Coffee> {
-    this.query = query;
+  async findByName(name: string): Promise<Coffee> {
+    name;
 
     return new Promise((resolve) => resolve(null));
   }
