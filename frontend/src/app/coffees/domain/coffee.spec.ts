@@ -1,30 +1,36 @@
-import { Coffee } from './coffee';
+import { Coffee } from "./coffee";
 
-it('is a valid Coffee', () => {
+it("is a valid Coffee", () => {
   expect(
     new Coffee({
-      title: 'Lavazza Espresso',
-      description: 'good for espresso in Italy',
-      addedAt: new Date(2012, 1, 1),
-    }).title
-  ).toEqual('Lavazza Espresso');
+      name: "GEPA Chiapas with two lines",
+      description: "test",
+      picture: "/assets/image.png",
+      type: "ARABIC",
+      created_at: new Date(2012, 1, 1),
+    }).name
+  ).toEqual("GEPA Chiapas with two lines");
 
   expect(
     new Coffee({
-      title: 'Lavazza Espresso',
-      description: 'good for espresso in Italy',
-      addedAt: new Date(2012, 1, 1),
-    }).description
-  ).toEqual('good for espresso in Italy');
+      name: "good for espresso in Italy",
+      description: "test",
+      picture: "/assets/image.png",
+      type: "ARABIC",
+      created_at: new Date(2012, 1, 1),
+    }).name
+  ).toEqual("good for espresso in Italy");
 });
 
-it.skip('getDate', () => {
+it.skip("getDate", () => {
   // TODO - Fix me
   expect(
     new Coffee({
-      title: 'Lavazza Espresso',
-      description: 'good for espresso in Italy',
-      addedAt: new Date(2012, 1, 1),
+      name: "good for espresso in Italy",
+      description: "test",
+      picture: "/assets/image.png",
+      type: "ARABIC",
+      created_at: new Date(2012, 1, 1),
     }).getDate()
-  ).toEqual('2012-01-31T23:00:00.000Z');
+  ).toEqual("2012-01-31T23:00:00.000Z");
 });
