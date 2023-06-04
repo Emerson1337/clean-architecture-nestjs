@@ -15,11 +15,11 @@ export class TypeOrmTeaRepository implements TeaRepository {
     return await this.teaRepository.save(createdTea);
   }
 
-  async get(query: any): Promise<Array<Tea>> {
-    return await this.teaRepository.find(query);
+  async getAll(): Promise<Array<Tea>> {
+    return await this.teaRepository.find();
   }
 
-  async find(query: any): Promise<Tea> {
-    return await this.teaRepository.findOne(query);
+  async findByName(name: string): Promise<Tea> {
+    return await this.teaRepository.findOne({ name });
   }
 }
