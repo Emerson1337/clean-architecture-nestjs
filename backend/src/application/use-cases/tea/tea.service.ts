@@ -16,7 +16,7 @@ export class TeaService {
     this.productValidator.validateProductFields(tea);
 
     const teaCreated = await this.teaRepository.findByName(tea.name);
-
+    //test
     if (teaCreated)
       throw new InvalidParamError('name', 'This name already exists!');
 
