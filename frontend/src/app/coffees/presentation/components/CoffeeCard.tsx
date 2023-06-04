@@ -1,15 +1,32 @@
-import React from 'react';
+import Image from "next/dist/client/image";
+import React from "react";
 
-export const CoffeeCard: React.FC<{
-  title: string;
-  description: string;
-  date: string;
-}> = ({ title, description, date }) => {
+type Props = {
+  productPhoto: string;
+  productName: string;
+  productType?: "ROBUSTA" | "ARABIC";
+};
+
+export const CoffeeCard: React.FC<Props> = ({
+  productPhoto,
+  productName,
+  productType,
+}) => {
   return (
-    <div className="border border-black">
-      <h1 className="text-5xl text-primary">{title}</h1>
-      <p className="mt-2 text-sm text-grey">{description}</p>
-      <p className="mt-2 text-sm text-grey">{date}</p>
+    <div className="product-card">
+      <div className="card-header">
+        <Image
+          layout="fixed"
+          src={productPhoto}
+          width={230}
+          height={230}
+          alt="coffee-photo"
+        />
+      </div>
+      <div className="card-body">
+        <div className="product-name">{productName}</div>
+        <div className="product-type">{productType}</div>
+      </div>
     </div>
   );
 };
