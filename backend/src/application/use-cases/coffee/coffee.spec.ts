@@ -84,7 +84,7 @@ describe('Coffee service', () => {
     );
   });
 
-  test('Should not be able to create coffee if empty short description is provided', async () => {
+  test('Should not be able to create coffee if short description is provided', async () => {
     const { sut } = makeSut();
     const coffeeRequest = {
       name: 'valid_name',

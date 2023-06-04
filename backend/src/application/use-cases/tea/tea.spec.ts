@@ -80,7 +80,7 @@ describe('Tea service', () => {
     );
   });
 
-  test('Should not be able to create tea if empty short description is provided', async () => {
+  test('Should not be able to create tea if short description is provided', async () => {
     const { sut } = makeSut();
     const teaRequest = {
       name: 'valid_name',
