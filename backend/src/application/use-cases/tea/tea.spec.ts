@@ -1,11 +1,8 @@
 import { TeaService } from './tea.service';
 import { TeaRepository } from './repositories/tea.repository';
-import {
-  InvalidParamError,
-  MissingParamError,
-} from '../../../presentation/errors';
-import { Validator } from '../../../domain/validators/validator.interface';
-import { ProductValidator } from '../../../domain/validators/product.validator';
+import { InvalidParamError, MissingParamError } from '@presentation/errors';
+import { Validator } from '@domain/validators/validator.interface';
+import { ProductValidator } from '@domain/validators/product.validator';
 import { makeFakeTea } from './mocks/factories';
 import { TeaRepositoryStub } from './mocks/TeaRepositoryStub';
 

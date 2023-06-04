@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProductDto } from '../../dtos/create-product-dto';
+import { CreateProductDto } from '@application/dtos/create-product-dto';
 import { CoffeeRepository } from './repositories/coffee.repository';
-import { Coffee } from '../../../domain/entities/coffee.entity';
-import { ProductValidator } from '../../../domain/validators/product.validator';
-import { InvalidParamError } from '../../../presentation/errors';
+import { Coffee } from '@domain/entities/coffee.entity';
+import { ProductValidator } from '@domain/validators/product.validator';
+import { InvalidParamError } from '@presentation/errors';
 
 @Injectable()
 export class CoffeeService {

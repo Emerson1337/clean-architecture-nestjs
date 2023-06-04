@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { CoffeeRepository } from 'src/application/use-cases/coffee/repositories/coffee.repository';
 import { TypeOrmCoffeeRepository } from './typeorm/repositories/coffee.repository';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Coffee } from '../../domain/entities/coffee.entity';
+import { Coffee } from '@domain/entities/coffee.entity';
 import { ConfigModule } from '@nestjs/config';
-import { Tea } from '../../domain/entities/tea.entity';
-import { TeaRepository } from '../../application/use-cases/tea/repositories/tea.repository';
+import { Tea } from '@domain/entities/tea.entity';
+import { TeaRepository } from '@application/use-cases/tea/repositories/tea.repository';
 import { TypeOrmTeaRepository } from './typeorm/repositories/tea.repository';
 
 @Module({
