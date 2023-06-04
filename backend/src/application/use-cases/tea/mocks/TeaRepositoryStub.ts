@@ -5,7 +5,6 @@ import { makeFakeTea } from './factories';
 
 export class TeaRepositoryStub implements TeaRepository {
   tea: CreateProductDto;
-  query: any;
 
   async create(tea: CreateProductDto): Promise<Tea> {
     this.tea = tea;
