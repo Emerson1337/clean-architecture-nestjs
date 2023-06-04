@@ -11,6 +11,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { Request, Response } from 'express';
 import { handleError, ok } from '@presentation/helpers/http.helper';
 import { FileAdapter } from '@infra/adapters/fileAdapter/file.adapter';
+import { InvalidParamError } from '../../../errors';
 
 @Controller('teas')
 export class TeaController {
@@ -20,6 +21,12 @@ export class TeaController {
   @UseInterceptors(FileInterceptor('picture', new FileAdapter().saveFile()))
   async create(@Req() request: Request, @Res() response: Response) {
     try {
+      if (!request.file)
+        throw new InvalidParamError(
+          'picture',
+          "Picture wasn't provided or it's not an image",
+        );
+
       const tea = Object.assign(request.body, {
         picture: request.file.path,
       });

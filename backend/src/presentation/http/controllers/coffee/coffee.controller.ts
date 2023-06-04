@@ -7,19 +7,25 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { CoffeeService } from '@application/use-cases/coffee/coffee.service';
-import { FileInterceptor } from '@nestjs/platform-express';
 import { Request, Response } from 'express';
 import { handleError, ok } from '@presentation/helpers/http.helper';
-import { FileAdapter } from '@infra/adapters/fileAdapter/file.adapter';
+import { FileInterceptorWithFallback } from '@infra/adapters/fileAdapter/file.adapter';
+import { InvalidParamError } from '../../../errors';
 
 @Controller('coffees')
 export class CoffeeController {
   constructor(private readonly coffeeService: CoffeeService) {}
 
   @Post()
-  @UseInterceptors(FileInterceptor('picture', new FileAdapter().saveFile()))
+  @UseInterceptors(FileInterceptorWithFallback('picture'))
   async create(@Req() request: Request, @Res() response: Response) {
     try {
+      if (!request.file)
+        throw new InvalidParamError(
+          'picture',
+          "Picture wasn't provided or it's not an image",
+        );
+
       const coffee = Object.assign(request.body, {
         picture: request.file.path,
       });
