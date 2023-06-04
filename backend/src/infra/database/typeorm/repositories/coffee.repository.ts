@@ -16,11 +16,11 @@ export class TypeOrmCoffeeRepository implements CoffeeRepository {
     return await this.coffeeRepository.save(createdCoffee);
   }
 
-  async get(query: any): Promise<Array<Coffee>> {
-    return await this.coffeeRepository.find(query);
+  async getAll(): Promise<Array<Coffee>> {
+    return await this.coffeeRepository.find();
   }
 
-  async find(query: any): Promise<Coffee> {
-    return await this.coffeeRepository.findOne(query);
+  async findByName(name: string): Promise<Coffee> {
+    return await this.coffeeRepository.findOne({ name });
   }
 }
