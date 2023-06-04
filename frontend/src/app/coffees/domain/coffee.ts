@@ -1,15 +1,19 @@
 export class Coffee {
-  title: string;
+  name: string;
   description: string;
-  private addedAt: Date;
+  picture: string;
+  type: "ROBUSTA" | "ARABIC";
+  created_at: Date;
 
-  constructor(data: any) {
-    this.title = data.title;
+  constructor(data: Coffee) {
+    this.name = data.name;
     this.description = data.description;
-    this.addedAt = data.addedAt;
+    this.picture = data.picture;
+    this.type = data.type;
+    this.created_at = data.created_at;
   }
 
-  getDate() {
-    return this.addedAt;
+  public getDate?(): string {
+    return this.created_at.toString();
   }
 }
