@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "concurrently": "^8.1.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2"
   },
@@ -8,6 +9,7 @@
     "test:backend": "cd ./backend && npm run test",
     "testBackend:staged": "cd ./backend && npm run test -- --findRelatedTests",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "start-app": "concurrently \"cd ./backend && npm run start:dev\" \"cd ./frontend && npm run dev\""
   }
 }
