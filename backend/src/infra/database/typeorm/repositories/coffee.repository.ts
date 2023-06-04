@@ -1,8 +1,7 @@
 import { EntityRepository, Repository } from 'typeorm';
-
-import { Coffee } from '../../../../domain/entities/coffee.entity';
+import { Coffee } from '@domain/entities/coffee.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CoffeeRepository } from '../../../../application/use-cases/coffee/repositories/coffee.repository';
+import { CoffeeRepository } from '@application/use-cases/coffee/repositories/coffee.repository';
 
 @EntityRepository(Coffee)
 export class TypeOrmCoffeeRepository implements CoffeeRepository {

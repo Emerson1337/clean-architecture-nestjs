@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProductDto } from '../../dtos/create-product-dto';
+import { CreateProductDto } from '@application/dtos/create-product-dto';
 import { TeaRepository } from './repositories/tea.repository';
-import { Tea } from '../../../domain/entities/tea.entity';
-import { ProductValidator } from '../../../domain/validators/product.validator';
-import { InvalidParamError } from '../../../presentation/errors';
+import { Tea } from '@domain/entities/tea.entity';
+import { ProductValidator } from '@domain/validators/product.validator';
+import { InvalidParamError } from '@presentation/errors';
 
 @Injectable()
 export class TeaService {

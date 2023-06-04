@@ -1,5 +1,5 @@
-import { Tea } from '../../../../domain/entities/tea.entity';
-import { CreateProductDto } from '../../../dtos/create-product-dto';
+import { Tea } from '@domain/entities/tea.entity';
+import { CreateProductDto } from '@application/dtos/create-product-dto';
 
 export abstract class TeaRepository {
   abstract create(coffee: CreateProductDto): Promise<Tea>;

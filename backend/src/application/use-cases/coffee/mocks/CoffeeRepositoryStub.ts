@@ -1,5 +1,5 @@
-import { Coffee } from '../../../../domain/entities/coffee.entity';
-import { CreateProductDto } from '../../../dtos/create-product-dto';
+import { Coffee } from '@domain/entities/coffee.entity';
+import { CreateProductDto } from '@application/dtos/create-product-dto';
 import { CoffeeRepository } from '../repositories/coffee.repository';
 import { makeFakeCoffee } from './factories';
 

@@ -1,11 +1,8 @@
 import { CoffeeService } from './coffee.service';
 import { CoffeeRepository } from './repositories/coffee.repository';
-import {
-  InvalidParamError,
-  MissingParamError,
-} from '../../../presentation/errors';
-import { Validator } from '../../../domain/validators/validator.interface';
-import { ProductValidator } from '../../../domain/validators/product.validator';
+import { InvalidParamError, MissingParamError } from '@presentation/errors';
+import { Validator } from '@domain/validators/validator.interface';
+import { ProductValidator } from '@domain/validators/product.validator';
 import { CoffeeRepositoryStub } from './mocks/CoffeeRepositoryStub';
 import { makeFakeCoffee } from './mocks/factories';
 

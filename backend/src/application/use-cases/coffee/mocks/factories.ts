@@ -1,4 +1,4 @@
-import { Coffee } from '../../../../domain/entities/coffee.entity';
+import { Coffee } from '@domain/entities/coffee.entity';
 
 export const makeFakeCoffee = (): Coffee => ({
   id: 'valid_id',

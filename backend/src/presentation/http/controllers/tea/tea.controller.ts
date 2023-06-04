@@ -6,11 +6,11 @@ import {
   Res,
   UseInterceptors,
 } from '@nestjs/common';
-import { TeaService } from '../../../../application/use-cases/tea/tea.service';
+import { TeaService } from '@application/use-cases/tea/tea.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Request, Response } from 'express';
-import { handleError, ok } from '../../../helpers/http.helper';
-import { FileAdapter } from '../../../../infra/adapters/fileAdapter/file.adapter';
+import { handleError, ok } from '@presentation/helpers/http.helper';
+import { FileAdapter } from '@infra/adapters/fileAdapter/file.adapter';
 
 @Controller('teas')
 export class TeaController {
