@@ -3,9 +3,20 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+body {
+  font-family: 'Montserrat';
+  font-size: 18px;
+  background-color: #FBFAF8;
+}
+
+.custom-container {
+  padding: 40px 10%;
+  width: 100%;
+}
+
 /* navbar styles */
 .navbar {
-  padding: 0 5rem;
+  padding: 0 10%;
   background-color: #8E9882;
   height: 56px;
   display: flex;
@@ -41,8 +52,6 @@
 
   color: #fff;
 
-  font-family: 'Montserrat';
-  font-size: 18px;
   font-weight: 500;
   line-height: 22px;
   letter-spacing: 0em;
@@ -109,6 +118,92 @@
     text-align: center;
     margin-top: -7px !important;
   }
+
+  .container {
+    padding: 40px 24px;
+    width: 100%;
+  }
+
+  .product-card {
+    margin-right: 0;
+    width: 327px !important;
+    height: 349px !important;
+    margin: 0 0 24px 0 !important;
+  }
+
+  .coffees {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 /* ///////////////////////////////// */
+
+.title-products-list {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 44px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #32332E;
+}
+
+.card-header {
+  display: flex;
+  justify-content: center;
+}
+
+.label-products-list {
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: #615F5B;
+}
+
+.product-card {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 16px;
+  width: 264px;
+  height: 349px;
+  background-color: #fff;
+  border: 1px solid #E7E3D9;
+  border-radius: 8px;
+  margin: 0 24px 24px 0;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-header {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #F1E7CD;
+}
+
+.card-body .product-name {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: 9px;
+}
+
+.product-type {
+  margin-top: 9px;
+  max-width: 82px;
+  height: 24px;
+  background: #758266;
+  border-radius: 2px;
+  font-family: Montserrat;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0em;
+  padding: 4px 8px;
+  color: #FBFAF8;
+}
