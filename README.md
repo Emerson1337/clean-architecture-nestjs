@@ -8,7 +8,7 @@ Focus: clean code, clean architecture, tests, commit patterns, and documentation
 
 # **Next steps**
 
-Add visual components for product creation and list new coffees stored, like a modal sending a `formData` to the API built.
+Add visual components for product creation and list new coffees and teas stored, like a modal sending a `formData` to the API built.
 
 # **Technologies used**
 
@@ -18,7 +18,8 @@ ReactJS using NextJS, Node through NestJS, Jest for testing, Axios, HTML, and CS
 
 PostgreSQL
 
-**Requirements to run the project**
+# **Requirements to run the project**
+
 There are two ways to run the project:
 
 1. You will only need Docker and Docker-compose installed on your local machine.
@@ -91,7 +92,7 @@ The API will run on [localhost](http://localhost) on 3000 port: localhost:3000/e
 - [x] List coffee/tea products
 - [x] Create tea/coffee products
 
-#**Git pattern applied**
+# **Git pattern applied**
 
 Gitmoji has been used for commitment patterns. Each emoji has a helpful description that you can check by installing a simple extension on VSCODE. Official website (https://gitmoji.dev/).
 
