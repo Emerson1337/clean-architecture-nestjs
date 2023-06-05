@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Navbar } from "../app/interface/presentation/pages/Navbar";
-import { TeaPage } from "../app/teas/presentation/pages/TeaPage";
-import { menuPaths } from "../shared/contants/menuPaths";
-import Spinner from "../app/interface/presentation/components/Spinner";
-import { fetchTeaService } from "../app/teas/application/fetchTeaService";
-import { TeaMapper } from "../app/teas/infrastructure/tea.mapper";
+import { Navbar } from "@app/interface/presentation/pages/Navbar";
+import { TeaPage } from "@app/teas/presentation/pages/TeaPage";
+import { menuPaths } from "@shared/contants/menuPaths";
+import Spinner from "@app/interface/presentation/components/Spinner";
+import { fetchTeaService } from "@app/teas/application/fetchTeaService";
+import { TeaMapper } from "@app/teas/infrastructure/tea.mapper";
 import { motion } from "framer-motion";
 
 export default function Index(): JSX.Element {

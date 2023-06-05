@@ -1,6 +1,6 @@
 import React from "react";
 import { TeaCard } from "../components/TeaCard";
-import { Tea } from "../../domain/tea";
+import { Tea } from "@app/teas/domain/tea";
 
 type Props = {
   data: Tea[];

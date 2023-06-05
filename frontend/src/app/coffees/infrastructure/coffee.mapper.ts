@@ -1,4 +1,4 @@
-import { apiAddress } from "../../../shared/contants/apiAddresses";
+import { apiAddress } from "@shared/contants/apiAddresses";
 import { Coffee } from "../domain/coffee";
 
 export const CoffeeMapper = {

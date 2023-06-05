@@ -1,5 +1,5 @@
-import { API } from "../../../services/config/apiConfig";
-import { apiUrls } from "../../../shared/lib/routes/apiUrls";
+import { API } from "@services/config/apiConfig";
+import { apiUrls } from "@shared/lib/routes/apiUrls";
 import { Coffee } from "../domain/coffee";
 
 export class CoffeeFacade {
