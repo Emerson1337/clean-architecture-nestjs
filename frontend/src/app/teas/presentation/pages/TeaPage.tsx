@@ -14,7 +14,7 @@ export const TeaPage: React.FC<Props> = ({ data }) => {
       </h1>
       <p className="mb-10">No pesticies or artificial flavours. We promise!</p>
       <div className="products">
-        {0 ? (
+        {data.length ? (
           data.map((coffee, key) => (
             <Product
               key={key}
