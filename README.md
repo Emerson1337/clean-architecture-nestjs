@@ -52,6 +52,12 @@ There are two ways to run the project:
 	The second one on backend, run: > npm run start:dev
 ```
 
+Once the app is running, we will have:
+
+API: localhost:3000
+Frontend app: localhost:4000
+database: localhost:5432
+
 # **Endpoints:**
 
 The API will run on [localhost](http://localhost) on 3000 port: localhost:3000/endpoints
