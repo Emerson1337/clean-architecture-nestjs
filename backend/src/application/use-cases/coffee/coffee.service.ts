@@ -13,7 +13,7 @@ export class CoffeeService {
   ) {}
 
   async create(coffee: CreateProductDto): Promise<Coffee | Error> {
-    this.productValidator.validateProductFields(coffee);
+    this.productValidator.validateCoffeeFields(coffee);
 
     const coffeeCreated = await this.coffeeRepository.findByName(coffee.name);
 
