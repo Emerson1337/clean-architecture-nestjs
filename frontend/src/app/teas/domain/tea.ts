@@ -11,8 +11,6 @@ export class Tea {
     this.created_at = data.created_at;
   }
 
-  // test
-
   public getDate?(): string {
     return this.created_at.toString();
   }

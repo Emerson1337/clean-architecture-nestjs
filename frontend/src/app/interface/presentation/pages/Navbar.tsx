@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../../../public/assets/logo.svg";
+import logo from "@assets/logo.svg";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
