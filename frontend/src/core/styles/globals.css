@@ -162,7 +162,7 @@ body {
     margin: 0 0 24px 0 !important;
   }
 
-  .coffees {
+  .products {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -228,7 +228,6 @@ body {
   margin-top: 9px;
   max-width: 82px;
   height: 24px;
-  background: #758266;
   border-radius: 2px;
   font-family: Montserrat;
   font-size: 13px;
@@ -237,4 +236,10 @@ body {
   letter-spacing: 0em;
   padding: 4px 8px;
   color: #FBFAF8;
+  background-color: #758266;
+
+}
+
+.product-type.red-color {
+  background-color: #CD4C15 !important;
 }
