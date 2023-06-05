@@ -5,36 +5,38 @@ import { CoffeePage } from "../app/coffees/presentation/pages/CoffeePage";
 import { Navbar } from "../app/interface/presentation/pages/Navbar";
 import { menuPaths } from "../shared/contants/menuPaths";
 import Spinner from "../app/interface/presentation/components/Spinner";
+import { motion } from "framer-motion";
 
-export async function getStaticProps(): Promise<any> {
-  const data = await fetchCoffeeService();
-  return {
-    props: {
-      data,
-    },
-  };
-}
-
-export default function Index({ data }: any): JSX.Element {
+export default function Index(): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    setTimeout(() => {
+    const fetchData = async () => {
+      setData(await fetchCoffeeService());
       setIsLoading(false);
-    }, 1000);
+    };
+    fetchData();
   }, []);
 
   const domainData = data.map(CoffeeMapper.toDomain);
   return (
     <>
       <Navbar buttons={menuPaths} />
-      {isLoading ? (
-        <div className="load-screen">
-          <Spinner />
-        </div>
-      ) : (
-        <CoffeePage data={domainData} />
-      )}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {isLoading ? (
+          <div className="load-screen">
+            <Spinner />
+          </div>
+        ) : (
+          <CoffeePage data={domainData} />
+        )}
+      </motion.div>
     </>
   );
 }

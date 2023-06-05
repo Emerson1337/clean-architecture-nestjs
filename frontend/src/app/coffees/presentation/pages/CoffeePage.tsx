@@ -7,44 +7,6 @@ type Props = {
 };
 
 export const CoffeePage: React.FC<Props> = ({ data }) => {
-  data = [
-    {
-      name: "GEPA Chiapas with two lines",
-      description: "test",
-      picture: "/assets/image.png",
-      type: "ROBUSTA",
-      created_at: new Date(2012, 1, 1),
-    },
-    {
-      name: "GEPA Chiapas with two lines",
-      description: "test",
-      picture: "/assets/image.png",
-      type: "ROBUSTA",
-      created_at: new Date(2012, 1, 1),
-    },
-    {
-      name: "GEPA Chiapas with two lines",
-      description: "test",
-      picture: "/assets/image.png",
-      type: "ROBUSTA",
-      created_at: new Date(2012, 1, 1),
-    },
-    {
-      name: "GEPA Chiapas with two lines",
-      description: "test",
-      picture: "/assets/image.png",
-      type: "ROBUSTA",
-      created_at: new Date(2012, 1, 1),
-    },
-    {
-      name: "GEPA Chiapas with two lines",
-      description: "test",
-      picture: "/assets/image.png",
-      type: "ROBUSTA",
-      created_at: new Date(2012, 1, 1),
-    },
-  ];
-
   return (
     <div className="custom-container">
       <h1 className="text-3xl mb-10 title-products-list">Our beloved coffee</h1>
@@ -53,14 +15,18 @@ export const CoffeePage: React.FC<Props> = ({ data }) => {
         promise you, this will be the best coffe of your life.
       </p>
       <div className="coffees">
-        {data.map((coffee, key) => (
-          <CoffeeCard
-            key={key}
-            productName={coffee.name}
-            productType={coffee.type}
-            productPhoto={coffee.picture}
-          />
-        ))}
+        {data.length ? (
+          data.map((coffee, key) => (
+            <CoffeeCard
+              key={key}
+              productName={coffee.name}
+              productType={coffee.type}
+              productPhoto={coffee.picture}
+            />
+          ))
+        ) : (
+          <h1>No coffees found!</h1>
+        )}
       </div>
     </div>
   );
