@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { fetchCoffeeService } from "../app/coffees/application/fetchCoffeeService";
 import { CoffeeMapper } from "../app/coffees/infrastructure/coffee.mapper";
-import { CoffeePage } from "../app/coffees/presentation/pages/CoffeePage";
 import { Navbar } from "../app/interface/presentation/pages/Navbar";
+import { TeaPage } from "../app/teas/presentation/pages/TeaPage";
 import { menuPaths } from "../shared/contants/menuPaths";
 import Spinner from "../app/interface/presentation/components/Spinner";
 
@@ -28,12 +28,13 @@ export default function Index({ data }: any): JSX.Element {
   return (
     <>
       <Navbar buttons={menuPaths} />
+
       {isLoading ? (
         <div className="load-screen">
           <Spinner />
         </div>
       ) : (
-        <CoffeePage data={domainData} />
+        <TeaPage data={domainData} />
       )}
     </>
   );
