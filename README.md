@@ -53,7 +53,7 @@ run npm install here.
 1. Install node on your machine (v16.20.0 is highly recommended)
 2. Go inside frontend and backend folders and run respectively "npm i"
 3. Remember to copy, paste and rename the .env.example file to .env
-4. > npm run typeorm run migration:run
+4. Inside the backend folder, run: backend > npm run typeorm run migration:run
 5. Run the script to init the database inside: backend > scripts > start-dev-db.sh
 6. Open two terminal guides
 	The first one on frontend, run: > npm run dev
