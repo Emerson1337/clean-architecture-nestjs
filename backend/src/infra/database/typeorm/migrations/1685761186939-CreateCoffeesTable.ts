@@ -20,6 +20,10 @@ export class CreateCoffeesTable1685761186939 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'type',
+            type: 'varchar',
+          },
+          {
             name: 'picture',
             type: 'varchar',
           },
