@@ -29,6 +29,7 @@ describe('Coffee service', () => {
     const coffeeRequest = {
       name: 'valid_name',
       picture: '',
+      type: 'ROBUSTA',
       description: 'valid_description',
     };
 
@@ -44,6 +45,7 @@ describe('Coffee service', () => {
     const coffeeRequest = {
       name: 'valid_name',
       picture: 'valid_picture.png',
+      type: 'ROBUSTA',
       description: '',
     };
 
@@ -58,6 +60,7 @@ describe('Coffee service', () => {
     const coffeeRequest = {
       name: '',
       picture: 'valid_picture.png',
+      type: 'ROBUSTA',
       description: 'valid_description',
     };
 
@@ -70,6 +73,7 @@ describe('Coffee service', () => {
     const coffeeRequest = {
       name: 'duplicated_name',
       picture: 'valid_picture.png',
+      type: 'ROBUSTA',
       description: 'valid_description',
     };
 
@@ -89,6 +93,7 @@ describe('Coffee service', () => {
     const coffeeRequest = {
       name: 'valid_name',
       picture: 'valid_picture.png',
+      type: 'ROBUSTA',
       description: 'val',
     };
 
@@ -98,12 +103,28 @@ describe('Coffee service', () => {
     );
   });
 
+  test('Should not be able to create coffee if invalid type is provided', async () => {
+    const { sut } = makeSut();
+    const coffeeRequest = {
+      name: 'valid_name',
+      picture: 'valid_picture.png',
+      type: 'invalid_type',
+      description: 'valid_description',
+    };
+
+    const coffeeResponse = async () => await sut.create(coffeeRequest);
+    await expect(coffeeResponse).rejects.toThrow(
+      new InvalidParamError('type', 'values acceptable: ROBUSTA or ARABIC!'),
+    );
+  });
+
   test('Should return a coffee created if valid data is provided', async () => {
     const { sut } = makeSut();
 
     const httpResponse = await sut.create({
       name: 'Coffee',
       picture: 'coffe.png',
+      type: 'ROBUSTA',
       description: 'desc',
     });
 
