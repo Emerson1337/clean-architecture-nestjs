@@ -65,9 +65,9 @@ The API will run on [localhost](http://localhost) on 3000 port: localhost:3000/e
 
 ![image](https://github.com/andersongomes/banksystem/assets/58860863/3a709146-119e-43d1-95dd-0dc48a4ee35c)
 
-# **\*\***\*\*\*\***\*\***\*\***\*\***\*\*\*\***\*\***Concepts applied:**\*\***\*\*\*\***\*\***\*\***\*\***\*\*\*\***\*\***
+# **Concepts applied:**
 
-\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***Front end part\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***
+**Front end part**
 
 - [x] Path mapping
 - [x] Endpoints centralizer
@@ -76,7 +76,7 @@ The API will run on [localhost](http://localhost) on 3000 port: localhost:3000/e
 - [x] Refactor current code
   - [x] Remove any types
 
-**\*\***\*\***\*\***Back end part**\*\***\*\***\*\***
+**Back end part**
 
 - [x] Path mapping
 - [x] Clean Architecture
