@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require("dotenv").config();
+
 module.exports = {
   async redirects() {
     return [
@@ -7,5 +10,8 @@ module.exports = {
         permanent: true,
       },
     ];
+  },
+  images: {
+    domains: ["localhost"],
   },
 };
