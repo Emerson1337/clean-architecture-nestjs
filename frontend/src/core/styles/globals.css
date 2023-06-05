@@ -12,6 +12,7 @@ body {
 .custom-container {
   padding: 40px 10%;
   width: 100%;
+  min-height: 80vh;
 }
 
 .spinner {
@@ -250,8 +251,9 @@ body {
     padding: 20px;
     color: var(--dark-yellow);
     text-align: center;
-    position: absolute;
+    position: relative;
     left: 0;
+    bottom: 0;
     width: 100%;
     height: 90px;
 }
