@@ -12,4 +12,14 @@ export class ProductValidator implements Validator {
       throw new InvalidParamError('description', 'Field too short!');
     if (!product?.picture) throw new MissingParamError('picture');
   }
+
+  validateCoffeeFields(coffee: CreateProductDto): void {
+    this.validateProductFields(coffee);
+    if (!coffee?.type) throw new MissingParamError('type');
+    if (!['ROBUSTA', 'ARABIC'].includes(coffee?.type))
+      throw new InvalidParamError(
+        'type',
+        'values acceptable: ROBUSTA or ARABIC!',
+      );
+  }
 }
