@@ -22,6 +22,8 @@ PostgreSQL
 
 There are two ways to run the project:
 
+Obs: it might take some time by the first time.
+
 For these two ways, you have to run `npm install` on the source of the project `./` .
 
 - Frontend
