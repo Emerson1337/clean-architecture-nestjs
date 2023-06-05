@@ -116,6 +116,9 @@ body {
     align-items: center;
   }
 
+  .custom-container {
+    padding: 40px 24px !important;
+  }
 
   .logo-space img, .logo-space > div {
     width: 222px !important;
