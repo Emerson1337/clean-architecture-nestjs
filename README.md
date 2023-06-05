@@ -91,7 +91,7 @@ The API will run on [localhost](http://localhost) on 3000 port: localhost:3000/e
 - [x] List coffee/tea products
 - [x] Create tea/coffee products
 
-Git pattern applied
+#**Git pattern applied**
 
 Gitmoji has been used for commitment patterns. Each emoji has a helpful description that you can check by installing a simple extension on VSCODE. Official website (https://gitmoji.dev/).
 
