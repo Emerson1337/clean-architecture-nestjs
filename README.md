@@ -22,6 +22,14 @@ PostgreSQL
 
 There are two ways to run the project:
 
+For these two ways, you have to run `npm install` on the source of the project `./` .
+
+- Frontend
+- backend
+- package.json
+
+run npm install here.
+
 1. You will only need Docker and Docker-compose installed on your local machine.
 
    Commands needed:
