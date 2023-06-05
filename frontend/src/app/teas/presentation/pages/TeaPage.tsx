@@ -1,6 +1,6 @@
 import React from "react";
-import { TeaCard } from "../components/TeaCard";
 import { Tea } from "@app/teas/domain/tea";
+import { Product } from "@app/interface/presentation/components/Product";
 
 type Props = {
   data: Tea[];
@@ -16,7 +16,7 @@ export const TeaPage: React.FC<Props> = ({ data }) => {
       <div className="products">
         {data.length ? (
           data.map((coffee, key) => (
-            <TeaCard
+            <Product
               key={key}
               productName={coffee.name}
               productPhoto={coffee.picture}

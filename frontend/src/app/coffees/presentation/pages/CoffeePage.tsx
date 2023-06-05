@@ -1,6 +1,6 @@
 import React from "react";
 import { Coffee } from "../../domain/coffee";
-import { CoffeeCard } from "../components/CoffeeCard";
+import { Product } from "@app/interface/presentation/components/Product";
 
 type Props = {
   data: Coffee[];
@@ -17,7 +17,7 @@ export const CoffeePage: React.FC<Props> = ({ data }) => {
       <div className="coffees">
         {data.length ? (
           data.map((coffee, key) => (
-            <CoffeeCard
+            <Product
               key={key}
               productName={coffee.name}
               productType={coffee.type}
