@@ -7,7 +7,7 @@ type Props = {
   productType?: "ROBUSTA" | "ARABIC";
 };
 
-export const CoffeeCard: React.FC<Props> = ({
+export const Product: React.FC<Props> = ({
   productPhoto,
   productName,
   productType,
@@ -20,18 +20,20 @@ export const CoffeeCard: React.FC<Props> = ({
           src={productPhoto}
           width={230}
           height={230}
-          alt="coffee-photo"
+          alt="product-photo"
         />
       </div>
       <div className="card-body">
         <div className="product-name">{productName}</div>
-        <div
-          className={`product-type ${
-            productType == "ARABIC" ? "red-color" : ""
-          }`}
-        >
-          {productType}
-        </div>
+        {productType && (
+          <div
+            className={`product-type ${
+              productType == "ARABIC" ? "red-color" : ""
+            }`}
+          >
+            {productType}
+          </div>
+        )}
       </div>
     </div>
   );
