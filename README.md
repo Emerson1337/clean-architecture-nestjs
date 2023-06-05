@@ -1,81 +1,134 @@
-## MVST Challenge
+# MVST - Challenge
 
-Hi, thanks for applying to MVST, the next step of the process is a coding challenge. If you have anything that we can help you with, just ping us.
+# **Coffees and Teas listing website**
 
+You can list all Coffees and Teas previously created on the app’s database.
 
-## How to get started 
-  To get started with the challenge, first read the rest of this README. Then you can go on and 
-  read the README.md inside the frontend and backend folders.
-  
-  [Backend README](https://github.com/mvst-h/mvst-coffee-tea-challenge/blob/master/backend/README.md)
-  
-  [Frontend README](https://github.com/mvst-h/mvst-coffee-tea-challenge/blob/master/frontend/README.md)
+Focus: clean code, clean architecture, tests, commit patterns, and documentation.
 
+# **Next steps**
 
-## Introduction 
+Add visual components for product creation and list new coffees stored, like a modal sending a `formData` to the API built.
 
-This challenge is a project that already contains backend and frontend structure. 
+# **Technologies used**
 
-The backend and frontend are not connected at the beginning of the challenge. 
+ReactJS using NextJS, Node through NestJS, Jest for testing, Axios, HTML, and CSS, Typeorm, Docker and Docker-compose, Husky and Lintstaged to prevent failures would be sent to the GitHub repository and Git.
 
-Your task will be to implement some requirements using this repository, but you may own the code. So feel free to refactor, readjust and improve if you feel like it. Also feel free to host the code, update the README. 
+# **Database used**
 
-## Task 
+PostgreSQL
 
-After running the frontend. You will see a list of coffees at "localhost:4000/coffees".
+**Requirements to run the project**
+There are two ways to run the project:
 
-### Task 1 - Coffee list :coffee:
-1. This list is currently static on the frontend. The first task is to connect the backend and the frontend to properly render the list with the data coming from the backend.
+1. You will only need Docker and Docker-compose installed on your local machine.
 
-2. Update both the frontend and the backend to reflect the design in the following Figma file. 
-    https://www.figma.com/file/eXKRZRFUDXaXEbRq2SnikI/Coding-Challenge?node-id=2%3A2
+   Commands needed:
 
-### Task 2 - Tea list :tea:
+   ```jsx
+   //1. env variables (on frontend and backend)
+   remember to copy, paste and rename the .env.example file to .env
 
-1. After part 1 is finished, we need to implement the second list. A list of teas. We need to add the backend and frontend to reflect the similar data in the design.
+   //2. run the docker-compose (you will get the API, the frontend, and
+   //also the database running). You won't need Node or any dependency installed
+   //locally. Changes in code are reflected inside the container (bind mount)
+   docker-compose up
 
-https://www.figma.com/file/eXKRZRFUDXaXEbRq2SnikI/Coding-Challenge?node-id=2%3A2
+   //3. In another terminal guide run migrations to create tables (don't forget)
+   npm run typeorm run migration:run
+   ```
 
-### Finishing the task
-1. Create a Pull Request with the coding challenge.
-2. Tell MVST HR Team that you are done with it
-3. That is it :)
+1. The traditional way
 
-### Expected result
+```jsx
+1. Install node on your machine (v16.20.0 is highly recommended)
+2. Go inside frontend and backend folders and run respectively "npm i"
+3. Remember to copy, paste and rename the .env.example file to .env
+4. > npm run typeorm run migration:run
+5. Run the script to init the database inside: backend > scripts > start-dev-db.sh
+6. Open two terminal guides
+	The first one on frontend, run: > npm run dev
+	The second one on backend, run: > npm run start:dev
+```
 
-1. The challenge is completed if both lists are rendering on the frontend and fetching on the backend.
-2. Using nest.js is a mandatory thing from this project.
-3. Next.js is there to help you have a quick start and focus on the coding. You can replace to Create React App if you feel like it would be faster.
+# **Endpoints:**
 
-### What we will check
-   To be transparent, these are some things we consider important in the challenge
-  
-  1. General skills of programming, we will analyze your code not only to have the lists rendering from the backend, but also the code quality in other ways.
-  2. Outcome in comparison with the design
+The API will run on [localhost](http://localhost) on 3000 port: localhost:3000/endpoints
 
+`GET /coffees`
 
-### ⚠️ Important notes
-The current code is just a base project that you can easily start focusing on coding. Please take in consideration that the decisions of folder structure, backend layers and architecture and other decisions has to be yours. 
+`POST /coffee`
 
-### FAQ
+`GET /teas`
 
--  I am not familiar with nest.js and next.js
-Don't spend much time trying to make a good project for nest and next, that is not what we want to analyze in those challenges. They are just there, so you have a running project and can show us some code.
+`POST /tea`
 
-For the frontend, focus more in the React part then in the next.js part. 
-For the backend part, focus more in the layers you add in the code than in really specifics for nest.js
+![image](https://github.com/andersongomes/banksystem/assets/58860863/3a709146-119e-43d1-95dd-0dc48a4ee35c)
 
-- I don't want to use tailwind
-Feel free to use pure CSS (we love it).
-Feel free to use any other library that might help you
+# **\*\***\*\*\*\***\*\***\*\***\*\***\*\*\*\***\*\***Concepts applied:**\*\***\*\*\*\***\*\***\*\***\*\***\*\*\*\***\*\***
 
- 
-### What would you improve if given more time?
-Please fill
+\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***Front end part\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***
 
----
+- [x] Path mapping
+- [x] Endpoints centralizer
+- [x] Clean Architecture (pattern used by default)
+- [x] Gitmoji to commits (https://gitmoji.dev/)
+- [x] Refactor current code
+  - [x] Remove any types
 
+**\*\***\*\***\*\***Back end part**\*\***\*\***\*\***
 
-Thanks and have a good challenge ;)
+- [x] Path mapping
+- [x] Clean Architecture
+- [x] Clean code
+- [x] Separate jest settings to the config file
+- [x] Husky and lint-staged configuration
+  - [x] Apply lint before sending changes (required code without eslint errors)
+  - [x] Run tests before each commit
+- [x] Test Drive Development (TDD)
+- [x] Gitmoji to commits (https://gitmoji.dev/)
+- [x] Add environment variables
+- [x] List coffee/tea products
+- [x] Create tea/coffee products
 
-MVST Team
+Git pattern applied
+
+Gitmoji has been used for commitment patterns. Each emoji has a helpful description that you can check by installing a simple extension on VSCODE. Official website (https://gitmoji.dev/).
+
+That’s a really complete and useful pattern. And beautiful!
+
+Messages:
+
+![image](https://github.com/andersongomes/banksystem/assets/58860863/896ef84a-aa4a-4aaa-b966-77bbaa51d04d)
+
+![image](https://github.com/andersongomes/banksystem/assets/58860863/4606b650-c642-41f7-85a1-c19d66d29f65)
+
+![image](https://github.com/andersongomes/banksystem/assets/58860863/25371cca-c537-4c73-991f-e2ec9595cc29)
+
+![image](https://github.com/andersongomes/banksystem/assets/58860863/e903d3ba-9245-4a64-9b89-841fa5386712)
+
+![image](https://github.com/andersongomes/banksystem/assets/58860863/f59af23c-052c-49b6-b4b5-3d72d8ba3a55)
+
+![image](https://github.com/andersongomes/banksystem/assets/58860863/4c658dc5-9b50-4ec6-a160-0522a23cdc93)
+
+# **Errors prevention**
+
+We have on the app Husky and Lintstaged configured. It means: any commit sending a broken service already covered by a test won’t be accepted to go to the repository. And also a “lint” command is run to fix and detect problems related to coding out the pattern.
+
+examples while the development process:
+
+![image](https://github.com/andersongomes/banksystem/assets/58860863/6f173c45-57e0-464f-986f-e603f97f4371)
+
+![image](https://github.com/andersongomes/banksystem/assets/58860863/fb92d583-6dc1-4979-8874-6e894291841f)
+
+# **Troubleshooting:**
+
+Node version problem (required v16.20.0)
+
+```jsx
+Error: error:0308010C:digital envelope routines::unsupported
+```
+
+If you get problems with the crypt version when you try to run the app on a container
+
+- Remember to delete `node_modules` folders from the backend and frontend if you are using an OS different from Linux.
