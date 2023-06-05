@@ -9,7 +9,7 @@ type Props = {
 export const TeaPage: React.FC<Props> = ({ data }) => {
   return (
     <div className="custom-container">
-      <h1 className="text-3xl mb-10 title-products-list">
+      <h1 className="text-3xl mb-4 title-products-list">
         Just you, hot water and our tea
       </h1>
       <p className="mb-10">No pesticies or artificial flavours. We promise!</p>

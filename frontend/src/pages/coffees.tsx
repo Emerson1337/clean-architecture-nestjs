@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { fetchCoffeeService } from "@app/coffees/application/fetchCoffeeService";
 import { CoffeeMapper } from "@app/coffees/infrastructure/coffee.mapper";
 import { CoffeePage } from "@app/coffees/presentation/pages/CoffeePage";
-import { Navbar } from "@app/interface/presentation/pages/Navbar";
-import { menuPaths } from "@shared/contants/menuPaths";
 import Spinner from "@app/interface/presentation/components/Spinner";
 import { motion } from "framer-motion";
 
@@ -22,7 +20,6 @@ export default function Index(): JSX.Element {
   const domainData = data.map(CoffeeMapper.toDomain);
   return (
     <>
-      <Navbar buttons={menuPaths} />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

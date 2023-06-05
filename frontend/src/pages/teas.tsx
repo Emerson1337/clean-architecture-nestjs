@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar } from "@app/interface/presentation/pages/Navbar";
 import { TeaPage } from "@app/teas/presentation/pages/TeaPage";
-import { menuPaths } from "@shared/contants/menuPaths";
 import Spinner from "@app/interface/presentation/components/Spinner";
 import { fetchTeaService } from "@app/teas/application/fetchTeaService";
 import { TeaMapper } from "@app/teas/infrastructure/tea.mapper";
@@ -24,7 +22,6 @@ export default function Index(): JSX.Element {
   const domainData = data.map(TeaMapper.toDomain);
   return (
     <>
-      <Navbar buttons={menuPaths} />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
