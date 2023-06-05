@@ -1,4 +1,5 @@
 import "../core/styles/globals.css";
+import "../core/styles/variables.css";
 import type { AppProps } from "next/app";
 import { motion } from "framer-motion";
 import { Navbar } from "../app/interface/presentation/pages/Navbar";
