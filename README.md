@@ -134,6 +134,6 @@ If you get problems with the crypt version when you try to run the app on a cont
 
 - Remember to delete `node_modules` folders from the backend and frontend if you are using an OS different from Linux before to run for the first time the docker-compose up command.
 
-Postman collection for API endpoints:
+# **Postman collection for API endpoints:**
 
 [Challenge API.postman_collection.json](https://drive.google.com/file/d/1Krw5LTfuwPm7rWxmEKNvK8cXNo5VM-hy/view?usp=sharing)
