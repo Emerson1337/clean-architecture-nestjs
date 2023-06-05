@@ -25,7 +25,13 @@ export const CoffeeCard: React.FC<Props> = ({
       </div>
       <div className="card-body">
         <div className="product-name">{productName}</div>
-        <div className="product-type">{productType}</div>
+        <div
+          className={`product-type ${
+            productType == "ARABIC" ? "red-color" : ""
+          }`}
+        >
+          {productType}
+        </div>
       </div>
     </div>
   );
