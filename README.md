@@ -1,4 +1,4 @@
-# MVST - Challenge
+# Clean architecture and Clean code concepts
 
 # **Coffees and Teas listing website**
 
